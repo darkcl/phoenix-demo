@@ -10,11 +10,21 @@ defmodule TooterWeb.PostLive.PostComponent do
       <td><%= @post.reposts_count %></td>
 
       <td>
-        <span><%= live_redirect "Show", to: Routes.post_show_path(@socket, :show, @post) %></span>
         <span><%= live_patch "Edit", to: Routes.post_index_path(@socket, :edit, @post) %></span>
-        <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @post.id, data: [confirm: "Are you sure?"] %></span>
+        <span><a href="#" phx-click="like" phx-target="<%= @myself %>">Like</a></span>
+        <span><a href="#" phx-click="repost" phx-target="<%= @myself %>">Repost</a></span>
       </td>
     </tr>
     """
+  end
+
+  def handle_event("like", _, socket) do
+    Tooter.Timeline.inc_likes(socket.assigns.post)
+    {:noreply, socket}
+  end
+
+  def handle_event("repost", _, socket) do
+    Tooter.Timeline.inc_reposts(socket.assigns.post)
+    {:noreply, socket}
   end
 end
