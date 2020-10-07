@@ -72,7 +72,7 @@ defmodule Tooter.Timeline do
     post
     |> Post.changeset(attrs)
     |> Repo.update()
-    |> broadcase(:post_created)
+    |> broadcast(:post_created)
   end
 
   @doc """
@@ -102,6 +102,10 @@ defmodule Tooter.Timeline do
   """
   def change_post(%Post{} = post, attrs \\ %{}) do
     Post.changeset(post, attrs)
+  end
+
+  def subscribe do
+    Phoenix.PubSub.broadcast(TooterWeb.PubSub, "posts")
   end
 
   defp broadcast({:error, _reason} = error, _event), do: error
