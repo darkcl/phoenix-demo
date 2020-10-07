@@ -21,10 +21,10 @@ services:
     # Uncomment to expose one or more ports
     ports:
       - "4000:4000"
+      - "4001:4001"
 
     volumes:
-      - ..:/workspace:cached
-      - ~/.gitconfig:/root/.gitconfig
+      - ..:/workspace:z
 
 
     # environment:
@@ -44,8 +44,6 @@ services:
       - POSTGRES_USER=postgres
     ports:
       - 5432:5432
-    volumes:
-      - /var/lib/postgresql/data
 
 secrets:
   host_ssh_key:

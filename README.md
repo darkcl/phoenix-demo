@@ -1,16 +1,18 @@
-# skeleton-phoenix
+# Tooter
 
-Skeleton project for phoenix framework
+To start your Phoenix server:
 
-## What is included
+  * Setup the project with `mix setup`
+  * Start Phoenix endpoint with `mix phx.server`
 
-- Pre-installed phoenix framework
-- SSH Key mapping from host to container
-- Postgres Setup
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-## Usage
+Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-```
-mix phx.new {{project_name}}
-mv {{project_name}} .
-```
+## Learn more
+
+  * Official website: https://www.phoenixframework.org/
+  * Guides: https://hexdocs.pm/phoenix/overview.html
+  * Docs: https://hexdocs.pm/phoenix
+  * Forum: https://elixirforum.com/c/phoenix-forum
+  * Source: https://github.com/phoenixframework/phoenix
