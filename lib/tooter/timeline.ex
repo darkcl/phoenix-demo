@@ -105,12 +105,12 @@ defmodule Tooter.Timeline do
   end
 
   def subscribe do
-    Phoenix.PubSub.broadcast(TooterWeb.PubSub, "posts")
+    Phoenix.PubSub.subscribe(Tooter.PubSub, "posts")
   end
 
   defp broadcast({:error, _reason} = error, _event), do: error
   defp broadcast({:ok, post}, event) do
-    Phoenix.PubSub.broadcast(TooterWeb.PubSub, "posts", {event, post})
+    Phoenix.PubSub.broadcast(Tooter.PubSub, "posts", {event, post})
     {:ok, post}
   end
 end
